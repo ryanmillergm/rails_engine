@@ -2,40 +2,31 @@ require 'csv'
 
 namespace :import do
   desc "Import data from CSV files"
+    task data: :environment do
+      `rails db:{drop,create,migrate}`
 
-  task customer: :environment do
-    CSV.foreach('./data/customers.csv', headers: true) do |row|
-      Customer.create(row.to_h)
-    end
-  end
+      CSV.foreach('./data/customers.csv', headers: true) do |row|
+        Customer.create(row.to_h)
+      end
 
-  task merchant: :environment do
-    CSV.foreach('./data/merchants.csv', headers: true) do |row|
-      Merchant.create(row.to_h)
-    end
-  end
+      CSV.foreach('./data/merchants.csv', headers: true) do |row|
+        Merchant.create(row.to_h)
+      end
 
-  task item: :environment do
-    CSV.foreach('./data/items.csv', headers: true) do |row|
-      Item.create(row.to_h)
-    end
-  end
+      CSV.foreach('./data/items.csv', headers: true) do |row|
+        Item.create(row.to_h)
+      end
 
-  task invoice: :environment do
-    CSV.foreach('./data/invoices.csv', headers: true) do |row|
-      Invoice.create(row.to_h)
-    end
-  end
+      CSV.foreach('./data/invoices.csv', headers: true) do |row|
+        Invoice.create(row.to_h)
+      end
 
-  task invoice_item: :environment do
-    CSV.foreach('./data/invoice_items.csv', headers: true) do |row|
-      InvoiceItem.create(row.to_h)
-    end
-  end
+      CSV.foreach('./data/invoice_items.csv', headers: true) do |row|
+        InvoiceItem.create(row.to_h)
+      end
 
-  task transaction: :environment do
-    CSV.foreach('./data/transactions.csv', headers: true) do |row|
-      Transaction.create(row.to_h)
-    end
+      CSV.foreach('./data/transactions.csv', headers: true) do |row|
+        Transaction.create(row.to_h)
+      end
   end
 end
