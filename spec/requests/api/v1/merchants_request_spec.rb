@@ -21,17 +21,6 @@ describe "Merchant API" do
     expect(merchant["id"]).to eq(id)
   end
 
-  it "can get one merchant by name" do
-    merchant = Merchant.create(name: "Bob")
-
-    get "/api/v1/merchants/find?name=Bob"
-    merchant_response = JSON.parse(response.body)
-
-    expect(response).to be_successful
-    binding.pry
-    expect(merchant_response["name"]).to eq(merchant.name)
-  end
-
   xit "can create an item" do
     item_params = {name: "Saw", description: "I want to play a game"}
 
