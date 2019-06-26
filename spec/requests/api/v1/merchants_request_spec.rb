@@ -11,7 +11,7 @@ describe "Merchant API" do
       merchants = JSON.parse(response.body)
    end
 
-  it "can get one item by its id" do
+  it "can get one merchant by its id" do
     id = create(:merchant).id
 
     get "/api/v1/merchants/#{id}"
@@ -19,6 +19,17 @@ describe "Merchant API" do
 
     expect(response).to be_successful
     expect(merchant["id"]).to eq(id)
+  end
+
+  it "can get one merchant by name" do
+    merchant = Merchant.create(name: "Bob")
+
+    get "/api/v1/merchants/find?name=Bob"
+    merchant_response = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    binding.pry
+    expect(merchant_response["name"]).to eq(merchant.name)
   end
 
   xit "can create an item" do
