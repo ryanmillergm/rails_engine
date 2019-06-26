@@ -4,21 +4,21 @@ describe "Merchant API" do
   it "sends a list of merchants" do
      create_list(:merchant, 3)
 
-      get '/api/v1/merchants/find_all'
+      get '/api/v1/merchants'
 
       expect(response).to be_successful
 
       merchants = JSON.parse(response.body)
    end
 
-  xit "can get one item by its id" do
-    id = create(:item).id
+  it "can get one item by its id" do
+    id = create(:merchant).id
 
-    get "/api/v1/items/#{id}"
-    item = JSON.parse(response.body)
+    get "/api/v1/merchants/#{id}"
+    merchant = JSON.parse(response.body)
 
     expect(response).to be_successful
-    expect(item["id"]).to eq(id)
+    expect(merchant["id"]).to eq(id)
   end
 
   xit "can create an item" do

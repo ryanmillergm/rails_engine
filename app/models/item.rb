@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
   belongs_to :merchant
-  has_many :invoices
+  has_many :invoices, through: :merchant
 end
