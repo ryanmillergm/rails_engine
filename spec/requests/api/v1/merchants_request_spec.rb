@@ -11,7 +11,7 @@ describe "Merchant API" do
       merchants = JSON.parse(response.body)
    end
 
-  it "can get one item by its id" do
+  it "can get one merchant by its id" do
     id = create(:merchant).id
 
     get "/api/v1/merchants/#{id}"
