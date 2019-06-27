@@ -23,5 +23,3 @@ describe "Merchants API" do
     expect(merchant_response.class).to equal(Array)
   end
 end
-
-# GET /api/v1/merchants/find_all?parameters
