@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "Merchant Favorite Customer" do
-  it "returns merchants favorite customer " do
+  xit "returns merchants favorite customer " do
     merchant = Merchant.create(name: "Bob")
     customer = Customer.create(first_name: "Dan", last_name: "Olsen")
     customer_2 = Customer.create(first_name: "Paul", last_name: "Johnson")
@@ -14,7 +14,7 @@ describe "Merchant Favorite Customer" do
     get "/api/v1/merchants/#{merchant.id}/favorite_customer"
 
     favorite_customer = JSON.parse(response.body)
-    binding.pry
+
     expect(favorite_customer).to eq(customer)
   end
 end
