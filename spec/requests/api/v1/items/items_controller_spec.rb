@@ -14,4 +14,17 @@ describe "Items API" do
     expect(response).to be_successful
     expect(items["data"].count).to eq(3)
   end
+
+  it "returns an item by id" do
+    merchant = Merchant.create(name: "Bob")
+    item_1 = Item.create(name: "Baseball", description: "Rawlings", unit_price: 200, merchant_id: merchant.id)
+    id = item_1.id
+
+    get "/api/v1/items/#{id}"
+
+    item = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(item["data"]["id"]).to eq(item_1.id.to_s)
+  end
 end
