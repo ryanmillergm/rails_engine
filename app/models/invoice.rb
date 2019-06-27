@@ -10,4 +10,8 @@ class Invoice < ApplicationRecord
     .limit(limit)
     .merge(Transaction.successful)
   end
+
+  def self.merchant_invoices(params)
+    Invoice.where(merchant_id: params.to_i)
+  end
 end

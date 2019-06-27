@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Merchants items" do
+describe "Merchants invoices" do
   it "returns a merchants invoices" do
     customer_1 = Customer.create(first_name: "Paul", last_name: "Olsen")
     merchant_1 = Merchant.create(name: "Bob")
@@ -10,13 +10,13 @@ describe "Merchants items" do
     invoice_4 = Invoice.create(customer_id: customer_1.id, merchant_id: merchant_1.id)
     id = merchant_1.id
 
-    get "/api/v1/merchants/:id/invoices"
+    get "/api/v1/merchants/#{id}/invoices"
 
     expect(response).to be_successful
 
     invoices = JSON.parse(response.body)
 
-    expect(invoices["data"].count).to eq(4)
+    expect(invoices.count).to eq(4)
   end
 
   it "returns invoices associated with a merchant from their orders" do
