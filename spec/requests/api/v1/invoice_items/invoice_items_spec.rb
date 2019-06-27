@@ -26,4 +26,20 @@ describe "InvoiceItems API" do
     expect(response).to be_successful
     expect(invoice_items["data"].count).to eq(4)
   end
+
+  it "returns invoice_item by id" do
+    customer = Customer.create(first_name: "Dan", last_name: "Olsen")
+    merchant = Merchant.create(name: "Bob")
+    invoice_1 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id)
+    item_1 = Item.create(name: "baseball", description: "Rawling", unit_price: 200, merchant_id: merchant.id)
+    invoice_item_1 = InvoiceItem.create(item_id: item_1.id, invoice_id: invoice_1.id)
+    id = invoice_item_1.id
+
+    get "/api/v1/invoice_items/#{id}"
+
+    invoice_item_id = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(invoice_item_id["data"]["id"]).to eq(id.to_s)
+  end
 end
