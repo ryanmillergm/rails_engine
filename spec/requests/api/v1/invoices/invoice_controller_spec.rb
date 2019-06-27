@@ -12,7 +12,7 @@ describe "Invoice API" do
     get "/api/v1/invoices"
 
     invoices = JSON.parse(response.body)
-    binding.pry
+
     expect(invoices["data"].count).to eq(3)
   end
 end
