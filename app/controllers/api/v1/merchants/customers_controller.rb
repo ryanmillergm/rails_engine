@@ -3,6 +3,5 @@ class Api::V1::Merchants::CustomersController < ApplicationController
     # merchant = Merchant.find(params[:id])
     # favorite_customer(merchant)
     render json: CustomerSerializer.new(Customer.favorite_customer(params[:id]))
-    binding.pry
   end
 end
