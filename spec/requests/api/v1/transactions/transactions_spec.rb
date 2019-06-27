@@ -27,4 +27,19 @@ describe "Transactions API" do
     expect(response).to be_successful
     expect(transactions["data"].count).to eq(5)
   end
+
+  it "can return transaction by id" do
+    customer = Customer.create(first_name: "Dan", last_name: "Olsen")
+    merchant = Merchant.create(name: "Bob")
+    invoice_1 = Invoice.create(customer_id: customer.id, merchant_id: merchant.id)
+    transaction_1 = Transaction.create(invoice_id: invoice_1.id, credit_card_number: "23432343234232234", credit_card_expiration_date: "01102020", result: "success")
+    id = transaction_1.id
+
+    get "/api/v1/transactions/#{id}"
+
+    transaction_id = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(transaction_id["data"]["id"]).to eq(transaction_1.id.to_s)
+  end
 end
