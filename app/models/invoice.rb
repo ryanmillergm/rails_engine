@@ -14,4 +14,12 @@ class Invoice < ApplicationRecord
   def self.merchant_invoices(params)
     Invoice.where(merchant_id: params.to_i)
   end
+
+  def self.find_all_invoices(params)
+    Invoice.where(params)
+  end
+
+  def self.find_invoice(params)
+    Invoice.find_by(params)
+  end
 end
