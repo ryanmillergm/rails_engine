@@ -5,10 +5,7 @@ class InvoiceItemSerializer
   belongs_to :invoice
 
   attribute :unit_price do |currency|
-    num = currency.unit_price
-    num = num * (1/100.to_f)
-    # "#{currency.unit_price = currency.unit_price * (1/100.to_f)}"
-    "#{currency.unit_price = num}"
+    "#{'%.2f' % (currency.unit_price * 1/100.to_f)}"
   end
 
 end
