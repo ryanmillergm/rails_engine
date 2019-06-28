@@ -16,7 +16,7 @@ class Invoice < ApplicationRecord
   end
 
   def self.find_all_invoices(params)
-    Invoice.where(params)
+    Invoice.where(params).order(id: :asc)
   end
 
   def self.find_invoice(params)
