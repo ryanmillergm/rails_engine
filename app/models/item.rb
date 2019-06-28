@@ -8,7 +8,8 @@ class Item < ApplicationRecord
   end
 
   def self.find_item(params)
-    Item.find(params[:id])
+    Item.find_by(params)
+    # Item.where(params).order(id: :asc)
   end
 
   def self.find_all_items(params)
