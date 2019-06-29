@@ -1,6 +1,7 @@
 class Api::V1::Customers::CustomerInvoicesController < ApplicationController
   def index
-    render json: InvoiceSerializer.new(Invoice.find_all_invoices(params))
+
+    render json: InvoiceSerializer.new(Customer.joins(:invoices).find(params[:id]).invoices)
   end
 
   private
