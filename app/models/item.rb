@@ -19,6 +19,5 @@ class Item < ApplicationRecord
 
   def self.find_all_items(params)
     Item.where(params)
-
   end
 end
