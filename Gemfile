@@ -39,6 +39,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fast_jsonapi'
+  gem 'table_print'
 end
 
 group :development do

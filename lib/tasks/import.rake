@@ -26,7 +26,7 @@ namespace :import do
       end
 
       CSV.foreach('./data/transactions.csv', headers: true) do |row|
-        Transaction.create(row.to_h)
+        Transaction.create!(row.to_h)
       end
   end
 end
