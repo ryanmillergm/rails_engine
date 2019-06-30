@@ -6,8 +6,18 @@ class Customer < ApplicationRecord
   has_many :merchants, through: :invoices
   has_many :transactions, through: :invoices
 
-  def self.favorite_customer(params)
+  def self.favorite_merchant(params)
+     Merchant.joins(:invoices)
+             .where(invoices: {customer_id: params[:id]})
+             .joins(:transactions)
+             .where(transactions: {result: 'success'})
+             .select("merchants.*, COUNT(transactions.id) AS transactions_count")
+             .group(:id)
+             .order("transactions_count DESC")
+             .first
   end
+
+
 
   def self.find_customer(params)
     Customer.find_by(params)

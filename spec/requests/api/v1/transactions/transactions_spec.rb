@@ -20,7 +20,7 @@ describe "Transactions API" do
     transaction_3 = Transaction.create(invoice_id: invoice_3.id, credit_card_number: "23432343234232234", credit_card_expiration_date: "01102020", result: "success")
     transaction_4 = Transaction.create(invoice_id: invoice_4.id, credit_card_number: "23432343234232234", credit_card_expiration_date: "01102020", result: "success")
     transaction_5 = Transaction.create(invoice_id: invoice_5.id, credit_card_number: "23432343234232234", credit_card_expiration_date: "01102020", result: "success")
-
+    binding.pry
     get "/api/v1/transactions"
     transactions = JSON.parse(response.body)
 
