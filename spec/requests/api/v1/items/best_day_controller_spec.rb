@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Items API" do
 
-  it "can find item that was sold the most" do
+  it "can find day item was sold most" do
     customer_1 = Customer.create(first_name: "Bob", last_name: "Olsen")
     customer_1 = Customer.create(first_name: "Craig", last_name: "Olsen")
     customer_1 = Customer.create(first_name: "Sara", last_name: "Olsen")
@@ -30,7 +30,7 @@ describe "Items API" do
     invoice_item_3 = InvoiceItem.create(item_id: item_4.id, invoice_id: invoice_4.id, quantity: 2, unit_price: item_1.unit_price)
     invoice_item_3 = InvoiceItem.create(item_id: item_5.id, invoice_id: invoice_5.id, quantity: 2, unit_price: item_1.unit_price)
 
-    get "/api/v1/items/most_items?quantity=2"
+    get "/api/v1/items/#{item_1.id}/best_day"
 
     item_response = JSON.parse(response.body)
 
