@@ -1,25 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Rales Engine
 
-Things you may want to cover:
+## Project Description
+Rails Engine is a project where APIs are created using single responsiblity controllers. CSV files are imported to create data that will be used. Statistics are created using business logic. Relationships and endpoints are tested with spec harness.
 
 * Ruby version
 
-* System dependencies
+Ruby version 2.6.0.
 
-* Configuration
+* Database
 
-* Database creation
+Postgresql version 11.1.
+
+* Set up
+
+Clone this repository to your computer.  Once it has been cloned, run `bundle`.
+
+  https://github.com/ryanmillergm/rails_engine.git
+  
+  `cd rails_engine`
+  
+  `bundle install`
+
+  `rails db:{drop,create,migrate}`.
 
 * Database initialization
 
-* How to run the test suite
+Initializing the database requires running a rake task to import the CSV data into the database.  The raw CSV files are located in the /lib/data folder.
 
-* Services (job queues, cache servers, search engines, etc.)
+  Run `rake import:data`.
 
-* Deployment instructions
+* Database schema
 
-* ...
-# rails_engine
+The database consists of 6 tables.  
+
+* Testing
+
+  `rspec` was used to test this project. Run `rspec` + `\filename`.
+
